@@ -59,6 +59,7 @@ class ParseError(Error):
     """ Invalid JSON. An error occurred on the server while parsing the JSON text. """
     code = -32700
     message = _('Parse error.')
+    status = 400
 
 
 class InvalidRequestError(Error):
@@ -79,12 +80,14 @@ class InvalidParamsError(Error):
     """ Invalid method parameters. """
     code = -32602
     message = _('Invalid params.')
+    status = 400
 
 
 class ServerError(Error):
     """ Internal JSON-RPC error. """
     code = -32603
     message = _('Internal error.')
+    status = 500
 
 # -32099..-32000    Server error.     Reserved for implementation-defined server-errors.
 
@@ -94,6 +97,7 @@ class ServerError(Error):
 class RequestPostError(InvalidRequestError):
     """ JSON-RPC requests must be POST """
     message = _('JSON-RPC requests must be POST')
+    status = 405
 
 
 class InvalidCredentialsError(Error):
