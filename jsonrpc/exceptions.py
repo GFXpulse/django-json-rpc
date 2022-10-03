@@ -3,7 +3,7 @@ try:
     _("You're lazy...")  # this function lazy-loads settings
 except (ImportError, NameError):
     _ = lambda t, *a, **k: t
-from django.utils.encoding import smart_text
+from django.utils.encoding import smart_str
 
 
 class Error(Exception):
@@ -32,10 +32,10 @@ class Error(Exception):
         """ return the Exception data in a format for JSON-RPC """
 
         error = {
-            'name': smart_text(self.__class__.__name__),
+            'name': smart_str(self.__class__.__name__),
             'code': self.code,
             'message': "%s: %s" %
-            (smart_text(self.__class__.__name__), smart_text(self.message)),
+            (smart_str(self.__class__.__name__), smart_str(self.message)),
             'data': self.data
         }
 
