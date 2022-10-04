@@ -253,7 +253,6 @@ def jsonrpc_method(name,
                 return _func(*a, **kw)
             except Exception as e:
                 try:
-                    print('JSONRPC SERVICE EXCEPTION')
                     import traceback
                     traceback.print_exc()
                 except:
